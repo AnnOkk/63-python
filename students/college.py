@@ -33,7 +33,10 @@ class College:
         mn = (min_score,0)
         mx = (max_score+1,0)
         res = self._students_by_score.irange_key(mn,mx,inclusive=(True,False))
-        return list(res)
+        lst = list(res)
+        if len(lst) == 0:
+            return []
+        return lst
 
 
 
