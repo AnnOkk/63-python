@@ -41,12 +41,14 @@ class College:
     def get_students_by_id(self,student_id): #Сам факт, что _students отсортирован по id, не означает, что метод автоматически знает, какого студента нужно найти.
         student = Student(student_id, "", 0)
         index = self._students.bisect_left(student)
-        ss_id=self._students[student_id]
+
+
+
         if index>=len(self._students):
-            raise ValueError(f"Student {ss_id} does not exist")
+            raise ValueError(f"Student {student_id} does not exist")
         if self._students[index] == student:
             return self._students[index]
-        raise ValueError(f"Student {ss_id} does not exist")
+        raise ValueError(f"Student {student_id} does not exist")
 
 
 
