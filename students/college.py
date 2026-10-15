@@ -6,7 +6,7 @@ from students.student import Student
 class College:
     def __init__(self):
         self._students = SortedSet()
-        self._students_by_score = SortedKeyList(key=lambda s: s.score) ##are we need id?
+        self._students_by_score = SortedKeyList(key=lambda s: (s.score,s.id)) ##are we need id?
 
     def add_student(self, student):
 
@@ -30,7 +30,9 @@ class College:
 
     def get_students_by_scores_between(self,min_score,max_score):
         #todo homework include min and max
-        res = self._students_by_score.irange_key(min_score,max_score,inclusive=(True,True))
+        mn = (min_score,0)
+        mx = (max_score+1,0)
+        res = self._students_by_score.irange_key(mn,mx,inclusive=(True,False))
         return list(res)
 
 
